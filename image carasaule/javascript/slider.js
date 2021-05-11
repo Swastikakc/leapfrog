@@ -57,9 +57,9 @@ var Slider= function(){
 
     this.left= function(){
         clearInterval(myInterval);
-        console.log(i);
+      
         --i;
-        console.log(i);
+       
         if (i >= self.iteration){
             i=0;
         }
@@ -72,7 +72,7 @@ var Slider= function(){
         setTimeout(function(){
 
             document.getElementById("carousel").style.marginLeft= l+"%";
-            console.log(l);
+            
 
         }, 100);
         myInterval=setInterval(self.sliding,3000);
@@ -80,9 +80,9 @@ var Slider= function(){
 
     this.right= function(){
         clearInterval(myInterval);
-        console.log(i);
+        
         ++i;
-        console.log(i);
+        
         if (i >= self.iteration){
             i=0;
         }
@@ -95,7 +95,7 @@ var Slider= function(){
         setTimeout(function(){
 
             document.getElementById("carousel").style.marginLeft= l+"%";
-            console.log(l);
+           
 
         }, 100);
         myInterval=setInterval(self.sliding,3000);
