@@ -72,6 +72,7 @@ var Slider= function(){
         setTimeout(function(){
 
             document.getElementById("carousel").style.marginLeft= l+"%";
+            document.getElementById(i-1).checked= true;
             
 
         }, 100);
@@ -95,6 +96,7 @@ var Slider= function(){
         setTimeout(function(){
 
             document.getElementById("carousel").style.marginLeft= l+"%";
+            document.getElementById(i-1).checked= true;
            
 
         }, 100);
