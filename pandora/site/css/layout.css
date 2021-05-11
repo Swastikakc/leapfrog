@@ -1,0 +1,278 @@
+.header_wrapper{
+    width:100%;
+}
+@media screen and (min-width: 0px){
+    .main_logo{
+        margin-right: 26px;
+    }
+     
+    .sub_logo
+    {
+        color: #CC003E;
+        margin-right: 25%;
+    }
+    .primary_menu a {
+        font-size: larger;
+    }
+    .search_bar{
+        visibility: hidden;
+    }
+    .primary_menu{
+        visibility: hidden;
+    }
+    .hamburger{
+        visibility: visible;
+        float: left;
+        
+    }
+    .continue {
+        visibility: hidden;
+    }
+    .login_header{
+        float: left;
+        margin-right: 0%;
+    }
+    .banner{
+       display: none;
+    }
+}
+@media screen and (min-width: 768px) {
+    .login_header {
+        visibility: visible;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .primary_menu{
+        visibility: visible;
+    }
+    .hamburger{
+        visibility: hidden;
+    }
+    .login_header{
+        float: none;
+    }
+    .banner{
+        display: block;
+}
+@media screen and (min-width: 992px){
+    
+    .continue {
+        visibility: visible;
+    }
+    
+}
+
+@media screen and (min-width: 1200px){
+    .main_logo{
+        margin-right: 26px;
+        float: left;
+    }
+    .header{
+        margin-left: 12%;
+        margin-right: 12%;
+        margin-bottom:2% ;
+        padding-top: 1%;
+    }
+     
+    .sub_logo
+    {
+        color: #CC003E;
+        float:left;
+        margin-right: 25%;
+        font-size: smaller;
+    }
+    .login_header{
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+    .primary_menu{
+        float: left;
+        margin-right: 15%;
+    }
+    .search_bar{
+        visibility: visible;
+    }
+   
+}
+
+
+.menu{
+    float left;
+}
+.cart{
+    margin-right: 10px;
+}
+.checkout{
+    margin-right: 10px;
+}
+.account{
+    margin-right: 10px;
+    color: #CC003E;
+}
+
+form label{
+    font-weight: bold;
+    font-size: smaller;
+    margin-right: 5px;
+    float: left;
+}
+input{
+  border-radius: 0%;
+  border-width: 1px;
+  border-color: #D6D6D6;
+  height: 30px;
+  padding: 15px;
+  margin-right: 5px;
+  float: left;
+}
+button{
+    border-radius: 0%;
+    border-width: 0cm;
+    font-size: x-small;
+    font-weight: bolder;
+    width: 15%;
+    height: 30px;
+    align-self: center;
+    padding: 5px;
+    float: left ;
+    margin-right: 5px;
+    background: #CC003E;
+    color: ivory;
+}
+.divider{
+    margin-left: 12%;
+    margin-right: 12%; 
+} 
+
+.search_bar img{
+    float: left;
+}
+.search_bar input{
+    border-width: 1px;
+    border-color: #D6D6D6 ;
+    border-left: 0cm;
+}
+.banner{
+    margin-bottom: 2%;
+}
+.banner_content{
+    padding-top: 20%;
+    padding-left: 15%;
+}
+.content{
+    padding-top: 5px;
+    padding-left: 15%;
+}
+h1{
+    height: 20%;
+    width: 55%;
+    padding: 10px;
+}
+.content p{
+    width: 40%;
+    padding:10px;
+}
+.slider{
+    margin-top: 7%;
+    margin-left: 45%;
+}
+.page_content{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.welcome{
+    float: left;
+}
+.welcome img{
+    padding: 2%;
+    float: left;
+}
+.description{
+  padding-top: 5%;
+}
+.featured{
+    float: left;
+    font-weight: lighter;
+    color: gray;
+}
+.viewmore{
+    float: right;
+    font-weight: lighter;
+    color: gray;
+}
+.section1{
+    float: left;
+}
+
+.space{
+    width: 28%;
+    margin-right: 3%;
+}
+.section img{
+    margin-right: 1%;
+}
+.section1 span{
+    margin-right: 5%;
+    color: gray;
+}
+.section1 p{
+    margin-top: 2%;
+}
+.row{
+    width: 50%;
+    padding: 2%;
+}
+.spacer{
+    margin-top: 10%;
+}
+.inline-image {
+    position: relative;
+    top: 10px;
+}
+.space1{
+    width: 15%;
+    margin-right: 2%;
+    float: left;
+}
+.space2{
+    width: 25%;
+    margin-right: 2%;
+    float: left;
+}
+.space1 ul{
+    padding-left: 10%;
+    list-style: none; /* Remove default bullets */
+}
+.spacer1{
+    margin-top: 1%;
+    
+}
+.space1 li{
+    padding: 5%;
+}
+  
+.space1 ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #CC003E; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+  }
+.footer{
+    background-color: #2A2A2A;
+    padding-left: 12%;
+    padding-right: 12%;
+    padding-top: 2%;
+}
+.inline-search {
+    position: relative;
+    top: -1px;
+    height: 10px;
+    background:#E2E2E2;
+}
+.footer-credit{
+    padding-left : 12%;
+    padding-right: 12%;
+    padding-bottom: 5%;
+}

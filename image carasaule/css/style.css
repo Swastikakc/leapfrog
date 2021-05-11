@@ -1,0 +1,94 @@
+.leftArrow {
+    position: absolute;
+    z-index: 5;
+    margin-top: -250px;
+    background-color: black;
+    opacity: 50%;
+    width: 50px;
+    height: 70px;
+    left: 0;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.leftArrow:hover,.rightArrow:hover{
+
+    opacity: 80%;
+    cursor: pointer;
+
+}
+
+.rightArrow {
+    
+    position: absolute;
+    z-index: 5;
+    margin-top: -250px;
+    background-color: black;
+    opacity: 50%;
+    width: 50px;
+    height: 70px;
+    left: auto;
+    right: 0;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    
+}
+
+.Arrow{
+
+    display: inline-block;
+    border: 3px solid white;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-bottom: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.left{
+
+    transform: rotateZ(-135deg);
+
+}
+
+.right{
+
+    transform: rotateZ(45deg);
+}
+
+#dotsContainer{
+
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+
+}
+
+.dots{
+    
+    border: 2px solid;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+    
+}
+.dots:not(:last-child){
+   
+    margin-right: 40px;
+    
+}
+
+
+.dots:hover{
+
+    background: gray;
+
+}
