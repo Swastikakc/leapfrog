@@ -1,4 +1,4 @@
-var canvas = document.querySelector("canvas");
+var canvas = document.getElementById("canvas");
 
 // setting height and width to full screen
 canvas.width = window.innerWidth;
@@ -79,22 +79,15 @@ function Circle(x, y, velocity, radius) {
     this.x = x;
     this.y = y;
     this.velocity = {x:velocity.x, y: velocity.y}
-    this.radius = radius;
     this.mass = 1;
-
-    // for generating random color
-    this.color = "#";
-    for (var i = 0; i < 6; i++) {
-        this.color += Math.round(Math.random() * 15);
-    }
+    this.radius = radius;
 
 
-    // arc/ Circle
+    // ant
     this.draw = function () {
-        c.beginPath();
-        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); //x,y,radius,startangle,endangle, DRAW COUNTERCLOCKWISE
-        c.fillStyle = this.color;
-        c.fill();
+        var ant = new Image();
+        ant.src= "./images/ant.png";
+        c.drawImage(ant,this.x,this.y,radius,radius);
     }
 
 
@@ -107,7 +100,7 @@ function Circle(x, y, velocity, radius) {
             }
 
             if (distance(this.x, this.y, circleArray[u].x, circleArray[u].y) - (this.radius + circleArray[u].radius) < 0) {
-               
+    
                 resolve(this, circleArray[u]);
             }
         }
