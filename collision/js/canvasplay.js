@@ -162,3 +162,15 @@ for (var i = 0; i < 100; i++) {
 
 
 }
+
+var move = function () {
+    requestAnimationFrame(move);
+    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.strokeRect(rectX, rectY, rectWidth, rectHeight);
+    for (var i = 0; i < circleArray.length; i++) {
+        circleArray[i].update();
+    }
+
+}
+
+move();
