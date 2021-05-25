@@ -1,105 +1,118 @@
-// SELECT CVS
-const cvs = document.getElementById("canvas");
-const c = cvs.getContext("2d");
 
-i=-1;
-//for mouse
-const mouse = {
- x : undefined,
- y : undefined
+//to sell egg
+function sell() {
+    if (pantry > 0) {
+        pantry--;
+        money += eggCost;
+        notice = "Egg Was Sold"
+    }
+    else{
+        notice = "No Eggs to Sell"
+    }
 }
 
-//dimension of canvas
-cvs.width = window.innerWidth-300;
-cvs.height = window.innerHeight;
 
-// LOAD SPRITE IMAGE
-const sprite = new Image();
-sprite.src = "./images/sprite.png";
+// to grow
+setInterval(function () {
 
-//making coop
-var coop = function(){
-    
-    sX = 0;
-    sY = 200;
-    w = 120;
-    h = 120;
-    x = 0;
-    y = cvs.height-120;
-    coopNo = undefined;
+    for (var j = 0; j < chick.length; j++) {
+        if (chick[j].frame < 2) {
+            chick[j].feed = true;
+            notice= "Feed Chicken";
+            eggLaySound.play();
+
+        }
 
 
-    this.draw = function(){
-
-        c.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
-        
     }
-    this. update = function (){
-        this.draw();
-    }
-    
 
-}
+}, Math.random() * 100 + 5000)
 
-//making chicken
-const chicken ={
-    evolve : [
-       {sX : 0, sY: 0}, 
-       {sX : 180, sY:0},
-       {sX :350, sY:0}
-    ],
-    x : 20,
-    y : cvs.height-90,
-    w : 195,
-    h : 195,
-    coopNo : undefined,
+// to lay egg
+setInterval(function () {
 
-    frame : 0,
-
-    draw : function(){
-        let chicken = this.evolve[this.frame];
-        
-        c.drawImage(sprite, chicken.sX, chicken.sY, this.w, this.h,this.x, this.y, 80, 80);
-        
-    },
-
-    update : function (){
-        if (Math.abs(this.x+50-mouse.x)<50 && Math.abs(this.y+50-mouse.y)<50){
-            if (this.frame<2){
-                this.frame++;
+    for (var j = 0; j < chick.length; j++) {
+        if (chick[j].frame == 2) {
+            if (Math.random() - 0.6 < 0) {
+                chick[j].egg++;
+                eggLaySound.play();
+                notice = "Collect the eggs";
             }
-            
+        }
+
+
+    }
+
+}, Math.random() * 100 + 10000)
+
+// to collect egg and grow
+setInterval(function () {
+
+    for (var j = 0; j < chick.length; j++) {
+        for (var u = 0; u < place.length; u++) {
+            if (place[u].coopNo == chick[j].coopNo) {
+                if (chick[j].frame == 2 && place[u].selfCollect == true) {
+                    chick[j].eggCollect();
+                    
+                }
+                if (chick[j].frame < 2 && place[u].selfGrow == true) {
+                    chick[j].feedChicken();
+                   
+                }
+            }
         }
 
     }
+
+}, Math.random() * 100 + 8000)
+
+
+// to kill a chicken
+setInterval(function () {
+
+    for (var j = 0; j < chick.length; j++) {
+        if (chick[j].frame == 2) {
+            if (Math.random() - 0.2 < 0) {
+                for (var u = 0; u < chick.length; u++) {
+                    if (chick[j].coopNo == place[u].coopNo) {
+                        chick = chick.slice(0, j).concat(chick.slice(j + 1, chick.length));
+                        deadSound.play();
+                        place[u].occupied = 0;
+                        notice = "Chick died of flu"
+                    }
+                }
+
+
+            }
+        }
+
+
+    }
+
+}, Math.random() * 100 + 90000)
+
+function noticeBoard(){
+    c.fillStyle = "#966F33";
+    c.fillRect(cvs.width-275, 20, 270, 250);
+    c.fillStyle = "#228B22";
+    c.fillRect(cvs.width-260, 35, 240, 220);
+    c.font = "15px Arial";
+    c.fillStyle = "#FFFFFF";
+    c.fillText(notice, cvs.width-230, 100);
+    
 }
 
-window.addEventListener ('click', function (event){
-    mouse.x = event.x;
-    mouse.y = event.y;
-    chicken.update();
-})
 
-// place = [];
-// function addCoop(){
-//     console.log ("i is incremented")
-//     place.push  (new coop);
-//     console.log (place);
+
+
+
+// //loop
+// function loop() {
+//     c.fillStyle = "#964B00";
+//     c.fillRect(0, 0, cvs.width, cvs.height);
+//     draw();
+//     document.getElementById("money").innerHTML = "Money: Rs." + money;
+//     document.getElementById("pantry").innerHTML = "Eggs :" + pantry;
+//     requestAnimationFrame(loop);
 // }
-
-place = new coop;
-
-// function to draw
-function draw(){
-    place.draw();
-    chicken.draw();
-}
-
-//loop
-function loop(){
-    c.fillStyle = "#964B00";
-    c.fillRect(0, 0, cvs.width, cvs.height);
-    draw();
-    requestAnimationFrame(loop);
-}
-loop();
+// loop();

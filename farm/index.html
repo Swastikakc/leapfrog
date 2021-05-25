@@ -19,19 +19,28 @@
         <canvas id = "canvas"> </canvas>
 
         <div class = "button-container">
-
-            <button id = "money">Money</button>
-            <button id = "pantry">Pantry</button>
-            <button id = "coop" onclick="addCoop();">Coop +</button>
-            <button id = "chicken" onclick="addChicken();">Chicken +</button>
+            
+            <div class = "center">
+                <p id = "money">Money</p>
+            </div>
+            <div class = "center">
+                <p id = "pantry">Pantry</p>
+                <button id = "sell" onclick="sell();">Sell</button>
+            </div>
+            
+            <button id = "coop" onclick="addCoop();">Coop(Rs. 300) +</button>
+            <button id = "chicken" onclick="addChicken();">Chicken (Rs. 100) +</button>
 
         </div>
 
     </div>
     
-
-
+    <script src="./js/buttons.js"></script>
+    <script src="./js/variable.js"></script>
     <script src="./js/play.js"></script>
+    <script src="./js/elements.js"></script>
+    <script src="./js/main.js"></script>
+   
 
 </body>
 

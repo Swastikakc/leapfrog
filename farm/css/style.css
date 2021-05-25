@@ -33,3 +33,29 @@ body{
 
 }
 
+.button-container .center{
+    
+    display: flex;
+    flex-direction: row;
+    padding: auto;
+    margin : 20% ;
+    height : 45px;
+    background-color: #d4742e;
+    text-align: center;
+    border-radius: 20px;
+    color:rgb(235, 240, 211);
+
+}
+
+.button-container .center #pantry{
+   
+    width: 100px;
+
+}
+
+.button-container .center button{
+    
+    width: 50px;
+    height: 40px;
+    margin-top: 2px;
+}
