@@ -14,8 +14,21 @@ const bg = new Image();
 bg.src = './images/bg.png';
 const back = new Image();
 back.src = './images/back.jpg';
+const dead = new Image();
+dead.src = './images/dead.png';
+
+var fillColor = "#966F33";
 
 // Load audio
+var gameOver = new Audio();
+gameOver.src = "./audio/gameover.wav";
+
+var amb = new Audio();
+amb.src = "./audio/amb.wav";
+
+var coin = new Audio();
+coin.src = "./audio/coin.wav";
+
 var chickSound = new Audio();
 chickSound.src = "./audio/chick.mp3";
 
@@ -25,26 +38,31 @@ deadSound.src = "./audio/dead.mp3";
 var eggLaySound = new Audio();
 eggLaySound.src = "./audio/egglaying.mp3";
 
+var click = new Audio();
+click.src = "./audio/click.wav";
+
 var coopCounter0 = -1;
 var coopCounter1 = -1;
 var chickenCounter = -1;
 var coopFull;
 var noCoop;
-var money = 100000;
+var money = 11000;
 var pantry = 0;
 var egg0=0;
 var egg1=0;
 var egg0Sell = false;
 var egg1Sell = false;
+var adultChicken = 0;
 
 
-const chickenCost = 0;
-const coopCost = 0;
+
+const chickenCost = 100;
+const coopCost = 300;
 const eggCost1 = 50;
 const eggCost2 = 55;
-const feedCost = 0;
-const collectCost = 0;//500
-const growCost = 0;//250
+const feedCost = 25;
+const collectCost = 500;//500
+const growCost = 250;//250
 
 var notice = "Welcome to Chicken Farm";
 var screen = 0;

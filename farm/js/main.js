@@ -1,7 +1,6 @@
 chickHouse = [];
 chickHouse.push(new house(0, false));
 chickHouse.push(new house(1, true));
-console.log(chickHouse);
 
 function draw() {
     
@@ -24,7 +23,7 @@ function draw() {
         //for 2 house
         chickHouse[0].draw();
         chickHouse[1].draw();
-        // c.drawImage(sprite, 0, 650, 200, 200, 440,cvs.height-280 , 200, 200);
+        
 
         //hide buttons
         coopButton.style.visibility = "hidden";
@@ -52,6 +51,7 @@ function draw() {
         }
         
     }
+ 
     noticeBoard();
 }
 
@@ -72,6 +72,7 @@ function update() {
             }
 
         }
+        
         // on click
         if (Math.abs(chickHouse[0].x + 100 - mouse.x) < 100 && Math.abs(chickHouse[0].y + 100 - mouse.y) < 100 && chickHouse[0].locked==false) {
             screen = 1;
@@ -94,7 +95,7 @@ function update() {
         }
        
         if (Math.abs(chickHouse[0].x + 50- mouse.x) < 100 && Math.abs(chickHouse[0].y +chickHouse[0].h+50 - mouse.y) < 50) {
-            console.log("I am selling");
+            
             chickHouse[0].buttonY = 70;
             egg0Sell = true;
             sell();
@@ -150,10 +151,10 @@ function update() {
 
         for (var j = 0; j < place.length; j++) {
             if (place[j].screen == screen) {
-                console.log ("I am in the screen loop");
+                
                 // collect automate
                 if (Math.abs(place[j].x + 20 - mouse.x) < 25 && Math.abs(place[j].y + 20 - mouse.y) < 25 && money >= collectCost) {
-                    console.log("I am in side conditional");
+                    
                     if (place[j].selfCollect == false) {
                         place[j].selfCollect = true;
                         place[j].activateCollect = "#339691"
@@ -196,6 +197,7 @@ window.addEventListener('mousemove', function (event) {
 window.addEventListener('click', function (event) {
     mouse.x = event.x;
     mouse.y = event.y;
+    click.play();
     update();
 })
 
@@ -206,6 +208,29 @@ function loop() {
     c.fillRect(0, 0, cvs.width, cvs.height);
     draw();
     document.getElementById("money").innerHTML = "Money: Rs." + money;
+
+    if (money<50){
+        for (var j = 0; j<chick.length; j++){
+            if (chick[j].frame>=2){
+                adultChicken++;
+            }
+        }
+        if (adultChicken<=0){
+            setTimeout(function () {
+                location.reload()
+            }, 3000);
+            c.fillStyle = "#000000";
+            c.fillRect(0, 0, cvs.width, cvs.height);
+            c.font = " bold 40px Arial";
+            c.fillStyle = "#ff0000"
+            c.fillText("Game Over", cvs.width/2-100, cvs.height/2);
+            notice = "Game Over";
+            c.drawImage (dead,cvs.width/2-100, cvs.height/2+50,200,200);
+      
+            gameOver.play();
+
+        }
+    }
     
     requestAnimationFrame(loop);
 

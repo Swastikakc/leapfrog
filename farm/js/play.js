@@ -7,11 +7,15 @@ function sell() {
             money += eggCost1;
             egg0--;
             pantry--;
+            notice = "Egg Was Sold"
+            coin.play();
         }
         else if (screen==2 && egg1 > 0){
             money+=eggCost2;
             egg1--;
             pantry--;
+            notice = "Egg Was Sold"
+            coin.play();
         }
     }
     else{
@@ -22,15 +26,19 @@ function sell() {
             egg0Sell = false;
             money += eggCost1;
             pantry--;
+            notice = "Egg Was Sold"
+            coin.play();
         }
         else if (egg1Sell==true && egg1 > 0){
             egg1--;
             egg1Sell = false;
             money += eggCost2;
             pantry--;
+            notice = "Egg Was Sold"
+            coin.play();
         }
 
-        notice = "Egg Was Sold"
+        
     
    
 }
@@ -119,19 +127,6 @@ setInterval(function () {
 
 }, Math.random() * 100 + 90000)
 
-
-
-
-
-
-
-// //loop
-// function loop() {
-//     c.fillStyle = "#964B00";
-//     c.fillRect(0, 0, cvs.width, cvs.height);
-//     draw();
-//     document.getElementById("money").innerHTML = "Money: Rs." + money;
-//     document.getElementById("pantry").innerHTML = "Eggs :" + pantry;
-//     requestAnimationFrame(loop);
-// }
-// loop();
+setInterval(function(){
+    amb.play();
+},1000)

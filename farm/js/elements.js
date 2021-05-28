@@ -38,20 +38,21 @@ class coop {
                     return 1;
                 }
                 //draw coop
-                c.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w, this.h);
+                c.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x, this.y, this.w+10, this.h);
     
                 //draw selfCollect
                 c.beginPath();
                 c.arc(this.x + 20, this.y+20, 20, 0, Math.PI * 2, false); //x,y,radius,startangle,endangle, DRAW COUNTERCLOCKWISE
                 c.fillStyle = this.activateCollect;
                 c.fill();
-                c.drawImage(sprite, this.sX + 3 * this.w + 50, this.sY, 200, 100, this.x + 10, this.y-10, 50, 50);
+                c.drawImage(sprite, this.sX + 3 * this.w + 50, this.sY, 200, 100, this.x + 5, this.y-10, 50, 50);
     
                 // draw selfGrow
                 c.beginPath();
                 c.arc(this.x + 20, this.y + 90, 20, 0, Math.PI * 2, false); //x,y,radius,startangle,endangle, DRAW COUNTERCLOCKWISE
                 c.fillStyle = this.activateGrow;
                 c.fill();
+                c.drawImage(sprite, 480, 550, 100, 250, this.x + 10, this.y+80, 40, 50);
     
             }
            
@@ -63,6 +64,10 @@ class coop {
 class chicken {
     constructor(coopNo) {
         this.screen=screen;
+        this.coopNo = coopNo;
+
+        this.xCounter = this.coopNo % 6;
+        this.yCounter = Math.floor(coopNo / 6);
         if (this.screen == 1){
             this.evolve = [{
                 sX: 0,
@@ -81,7 +86,7 @@ class chicken {
                 sY: 185
             }
             ];
-           
+            this.x = 25 + 115 * this.xCounter;
         }
         else if (this.screen == 2){
             this.evolve = [{
@@ -101,17 +106,14 @@ class chicken {
                 sY: 530
             }
             ];
+            this.x = 40 + 115 * this.xCounter;
             
         }
         this.w = 195;
         this.h = 195; 
        
-        this.coopNo = coopNo;
 
-        this.xCounter = this.coopNo % 6;
-        this.yCounter = Math.floor(coopNo / 6);
-
-        this.x = 25 + 120 * this.xCounter;
+        
         this.y = cvs.height - 90 - (120 * this.yCounter);
        
 
@@ -133,23 +135,24 @@ class chicken {
 
         if (this.egg !== 0) {
             c.beginPath();
-            c.arc(this.x + 80, this.y - 10, 20, 0, Math.PI * 2, false); //x,y,radius,startangle,endangle, DRAW COUNTERCLOCKWISE
+            c.arc(this.x + 70, this.y - 10, 20, 0, Math.PI * 2, false); //x,y,radius,startangle,endangle, DRAW COUNTERCLOCKWISE
             c.fillStyle = "#ffcc00";
             c.fill();
-            c.drawImage(sprite, 0, 0, this.w, this.h, this.x + 65, this.y - 25, 30, 30);
+            c.drawImage(sprite, 0, 0, this.w, this.h, this.x + 55, this.y - 25, 30, 30);
             c.font = "10px Arial";
             c.fillStyle = "#FF0000";
-            c.fillText(this.egg, this.x + 85, this.y - 15);
+            c.fillText(this.egg, this.x + 75, this.y - 15);
         }
 
         if (this.feed == true) {
             c.beginPath();
-            c.arc(this.x + 80, this.y - 10, 20, 0, Math.PI * 2, false); //x,y,radius,startangle,endangle, DRAW COUNTERCLOCKWISE
+            c.arc(this.x + 70, this.y - 10, 20, 0, Math.PI * 2, false); //x,y,radius,startangle,endangle, DRAW COUNTERCLOCKWISE
             c.fillStyle = "#ffcc00";
             c.fill();
-            c.drawImage(sprite, 402, 390, 95, 95, this.x + 65, this.y - 25, 30, 30);
+            c.drawImage(sprite, 402, 390, 95, 95, this.x + 55, this.y - 25, 30, 30);
             c.font = "10px Arial";
             c.fillStyle = "#FF0000";
+            
         }
 
 
@@ -270,6 +273,8 @@ class house {
                 c.fillText("Click the coop to play", this.x+30, this.y-120);
             }
         }
+
+       
     }
     
 }
@@ -282,7 +287,7 @@ function noticeBoard(){
     // c.fillRect(cvs.width-260, 35, 190, 120);
     roundedRectangle(cvs.width-260, 35, 190, 120)
     c.font = " bold 12px Arial";
-    c.fillStyle = "#966F33";
+    c.fillStyle = fillColor;
     c.fillText(notice, cvs.width-250, 100);
     
 }
