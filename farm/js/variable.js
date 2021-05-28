@@ -32,6 +32,10 @@ var coopFull;
 var noCoop;
 var money = 100000;
 var pantry = 0;
+var egg0=0;
+var egg1=0;
+var egg0Sell = false;
+var egg1Sell = false;
 
 
 const chickenCost = 0;
@@ -60,3 +64,4 @@ const mouseH = {
 
 var coopButton = document.getElementById("coop");
 var chickenButton = document.getElementById("chicken");
+var pantryVisible = document.getElementById("sell");

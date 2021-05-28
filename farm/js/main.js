@@ -4,7 +4,7 @@ chickHouse.push(new house(1, true));
 console.log(chickHouse);
 
 function draw() {
-
+    
     if (screen == 0) {
 
         //for sky
@@ -29,13 +29,14 @@ function draw() {
         //hide buttons
         coopButton.style.visibility = "hidden";
         chickenButton.style.visibility = "hidden";
-
+        pantryVisible.style.visibility = "hidden";
 
     } else if (screen !== 0) {
         c.drawImage(back,0,0,cvs.width,cvs.height);
 
         coopButton.style.visibility = "visible";
         chickenButton.style.visibility = "visible";
+        pantryVisible.style.visibility = "visible";
 
         for (var j = 0; j < place.length; j++) {
             coopFull = place[j].draw();
@@ -49,9 +50,9 @@ function draw() {
                 chick.pop(j);
             }
         }
-        noticeBoard();
+        
     }
-
+    noticeBoard();
 }
 
 function update() {
@@ -91,8 +92,32 @@ function update() {
             }
             
         }
+       
+        if (Math.abs(chickHouse[0].x + 50- mouse.x) < 100 && Math.abs(chickHouse[0].y +chickHouse[0].h+50 - mouse.y) < 50) {
+            console.log("I am selling");
+            chickHouse[0].buttonY = 70;
+            egg0Sell = true;
+            sell();
+            mouse.x = undefined;
+            mouse.Y = undefined;
+        }
+        else if (Math.abs(chickHouse[1].x + 50- mouse.x) < 100 && Math.abs(chickHouse[1].y +chickHouse[1].h+50 - mouse.y) < 50){
+            chickHouse[1].buttonY = 70;
+            egg1Sell = true;
+            sell();
+            mouse.x = undefined;
+            mouse.Y = undefined;
+        }
+        else {
+            chickHouse[0].buttonY = 60;
+            chickHouse[1].buttonY = 60;
+        }
+        document.getElementById("pantry").innerHTML = "Eggs :" + pantry;
     }
     else if (screen !== 0) {
+        if (screen ==1){document.getElementById("pantry").innerHTML = "Eggs :" + egg0;}
+        else if(screen ==2){document.getElementById("pantry").innerHTML = "Eggs :" + egg1;}
+        
         //to grow chicken
         for (var j = 0; j < chick.length; j++) {
             if (chick[j].screen == screen) {
@@ -161,7 +186,6 @@ function update() {
         }
     }
 
-
 }
 
 window.addEventListener('mousemove', function (event) {
@@ -182,7 +206,7 @@ function loop() {
     c.fillRect(0, 0, cvs.width, cvs.height);
     draw();
     document.getElementById("money").innerHTML = "Money: Rs." + money;
-    document.getElementById("pantry").innerHTML = "Eggs :" + pantry;
+    
     requestAnimationFrame(loop);
 
 }

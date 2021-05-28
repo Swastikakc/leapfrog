@@ -2,19 +2,37 @@
 //to sell egg
 function sell() {
     if (pantry > 0) {
-        pantry--;
-        if (screen==1){
+        
+        if (screen==1 && egg0 > 0){
             money += eggCost1;
+            egg0--;
+            pantry--;
         }
-        else if (screen==2){
+        else if (screen==2 && egg1 > 0){
             money+=eggCost2;
+            egg1--;
+            pantry--;
         }
-
-        notice = "Egg Was Sold"
     }
     else{
         notice = "No Eggs to Sell"
     }
+        if (egg0Sell==true && egg0 > 0){
+            egg0--;
+            egg0Sell = false;
+            money += eggCost1;
+            pantry--;
+        }
+        else if (egg1Sell==true && egg1 > 0){
+            egg1--;
+            egg1Sell = false;
+            money += eggCost2;
+            pantry--;
+        }
+
+        notice = "Egg Was Sold"
+    
+   
 }
 
 
@@ -43,6 +61,7 @@ setInterval(function () {
                 chick[j].egg++;
                 eggLaySound.play();
                 notice = "Collect the eggs";
+                
             }
         }
 

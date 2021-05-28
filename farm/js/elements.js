@@ -18,9 +18,9 @@ class coop {
 
         this.coopNo = coopNo;
         this.occupied = 0;
-        this.sX = 10;
+        this.sX = 5;
         this.sY = 200;
-        this.w = 120;
+        this.w = 115;
         this.h = 120;
         this.selfCollect = false;
         this.selfGrow = false;
@@ -97,8 +97,8 @@ class chicken {
                 sY: 340
             },
             {
-                sX: 180,
-                sY: 495
+                sX: 190,
+                sY: 530
             }
             ];
             
@@ -129,7 +129,7 @@ class chicken {
             return 1;
         }
 
-        c.drawImage(sprite, chicken.sX, chicken.sY, this.w, this.h, this.x, this.y, 60 + 5 * this.frame, 60 + 5 * this.frame);
+        c.drawImage(sprite, chicken.sX, chicken.sY, this.w, this.h, this.x, this.y, 60 + 10 * this.frame, 60 + 5 * this.frame);
 
         if (this.egg !== 0) {
             c.beginPath();
@@ -196,6 +196,12 @@ class chicken {
             this.egg--;
             eggLaySound.play();
             pantry++;
+            if (this.screen == 1){
+                egg0++;
+            }
+            else if (this.screen == 2){
+                egg1++;
+            }
             notice = "Egg was collected";
         }
     };
@@ -218,6 +224,7 @@ class house {
         }
         this.locked = locked;
         this.hoverText = false;
+        this.buttonY = 60;
 
     }
     draw(){
@@ -225,10 +232,24 @@ class house {
         c.fillRect(this.x+10, this.y-50, 180, 30);
         c.font = "15px Arial";
         c.fillStyle = "#FFFFFF";
-        c.fillText("Chicken Farm"+this.houseNo, this.x+40, this.y-30);
+        c.fillText("Chicken Farm "+(this.houseNo+1), this.x+40, this.y-30);
         
         c.drawImage(sprite, this.sX, this.sY, this.w, this.h, this.x,this.y , this.houseSize.x, this.houseSize.y );
+        roundedRectangle(this.x+50,this.y +this.h+this.buttonY,100, 40);
         
+       
+        c.font = " bold 15px Arial";
+        c.fillStyle = "#964B00";
+
+        if (this.houseNo==0){
+            
+            c.fillText("Egg=" +egg0, this.x+70, this.y +this.h+this.buttonY+25);
+        }
+        else if (this.houseNo==1){
+            
+            c.fillText("Egg=" +egg1, this.x+70, this.y +this.h+this.buttonY+25);
+        }
+
         if (this.locked==true){
             c.drawImage(sprite, 0, 550, this.w, this.h, this.x+40,this.y-20 , this.houseSize.x/1.5, this.houseSize.y/1.5 );
             if (this.hoverText==true){
