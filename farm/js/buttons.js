@@ -33,7 +33,7 @@ function addChicken() {
                 chick.push(new chicken(place[j].coopNo));
                 money -= chickenCost;
                 place[j].occupied = 1;
-                notice = "A Chicken Egg Was Purchased" 
+                notice = "A Chicken Egg is owned" 
                 break;
             }
         }

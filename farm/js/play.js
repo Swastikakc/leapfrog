@@ -69,6 +69,10 @@ setInterval(function () {
                 chick[j].egg++;
                 eggLaySound.play();
                 notice = "Collect the eggs";
+                if (Math.random() - 0.1 < 0){
+                    chick[j].egg--;
+                    addChicken();
+                }
                 
             }
         }
