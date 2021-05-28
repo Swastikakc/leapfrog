@@ -3,7 +3,13 @@ var place = [];
 
 function addCoop() {
     if (money >= coopCost) {
-        place.push(new coop(++coopCounter));
+        if (screen==1){
+            place.push(new coop(++coopCounter0));
+        }
+        else if (screen==2){
+            place.push(new coop(++coopCounter1));
+        }
+        
         money -= coopCost;
         notice = "A New Coop Was Added"
     }
@@ -22,7 +28,7 @@ function addChicken() {
 
         for (var j = 0; j < place.length; j++) {
 
-            if (place[j].occupied === 0) {
+            if (place[j].occupied === 0 && place[j].screen==screen) {
 
                 chick.push(new chicken(place[j].coopNo));
                 money -= chickenCost;
@@ -38,4 +44,7 @@ function addChicken() {
     }
 
     
+}
+function home (){
+    screen=0;
 }

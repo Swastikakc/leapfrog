@@ -3,7 +3,13 @@
 function sell() {
     if (pantry > 0) {
         pantry--;
-        money += eggCost;
+        if (screen==1){
+            money += eggCost1;
+        }
+        else if (screen==2){
+            money+=eggCost2;
+        }
+
         notice = "Egg Was Sold"
     }
     else{
@@ -50,16 +56,19 @@ setInterval(function () {
 
     for (var j = 0; j < chick.length; j++) {
         for (var u = 0; u < place.length; u++) {
-            if (place[u].coopNo == chick[j].coopNo) {
-                if (chick[j].frame == 2 && place[u].selfCollect == true) {
-                    chick[j].eggCollect();
-                    
-                }
-                if (chick[j].frame < 2 && place[u].selfGrow == true) {
-                    chick[j].feedChicken();
-                   
+            if (place[u].screen == chick[j].screen){
+                if (place[u].coopNo == chick[j].coopNo) {
+                    if (chick[j].frame == 2 && place[u].selfCollect == true) {
+                        chick[j].eggCollect();
+                        
+                    }
+                    if (chick[j].frame < 2 && place[u].selfGrow == true) {
+                        chick[j].feedChicken();
+                       
+                    }
                 }
             }
+            
         }
 
     }
@@ -74,7 +83,7 @@ setInterval(function () {
         if (chick[j].frame == 2) {
             if (Math.random() - 0.2 < 0) {
                 for (var u = 0; u < chick.length; u++) {
-                    if (chick[j].coopNo == place[u].coopNo) {
+                    if (chick[j].coopNo == place[u].coopNo && chick[j].screen==place[u].screen) {
                         chick = chick.slice(0, j).concat(chick.slice(j + 1, chick.length));
                         deadSound.play();
                         place[u].occupied = 0;
@@ -91,16 +100,7 @@ setInterval(function () {
 
 }, Math.random() * 100 + 90000)
 
-function noticeBoard(){
-    c.fillStyle = "#966F33";
-    c.fillRect(cvs.width-275, 20, 270, 250);
-    c.fillStyle = "#228B22";
-    c.fillRect(cvs.width-260, 35, 240, 220);
-    c.font = "15px Arial";
-    c.fillStyle = "#FFFFFF";
-    c.fillText(notice, cvs.width-230, 100);
-    
-}
+
 
 
 
