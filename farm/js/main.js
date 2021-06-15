@@ -13,6 +13,7 @@ function draw() {
         //for grass
         c.fillStyle = "#7cfc00";
         c.fillRect(0, cvs.height - 200, cvs.width, 200);
+        //cloud
         c.drawImage(bg,0,500,700,400,500,cvs.height - 380,500,400);
         c.drawImage(bg,0,400,160,150,10,50,150,150);
         c.drawImage(bg,420,240,70,50,390,180,150,100);
